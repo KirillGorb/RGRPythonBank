@@ -1,0 +1,25 @@
+{% extends 'account/layout.html' %}
+
+{% block titel %}Регистрация{% endblock%}
+{% block option %}
+    <div class="container_top ">
+        <img src="left_image.png" class="img_left_top">
+        <div class="item_left_top">КириллБанк</div>
+        <div class="item_right_top">+7 902 194 64 72</div>
+    </div>
+{% endblock%}
+{% block content %}
+<div class="container-content">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.full_name }}
+        <div class="input-container">
+            {{ form.phone }}
+            {{ form.passport }}
+        </div>
+        {{ form.address }}
+        <span>{{ error }}</span>
+        <button class="submit-button" type="submit">Оформить</button>
+    </form>
+</div>
+{% endblock%}

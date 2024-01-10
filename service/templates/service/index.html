@@ -1,0 +1,19 @@
+{% extends 'account/layout.html' %}
+
+{% block titel %}Выбор услуги{% endblock%}
+{% block option %}<p class="center-top ">Выбор услуги</p>{% endblock%}
+{% block content %}
+
+<div class="container">
+    <form method="post">
+    {% csrf_token %}
+    <div class="servis-buttons-conteiner">
+        <a class="a-text  submit-button-big" href="{% url 'treaty' %}?value=Кредит">Кредит</a>
+        <a class="a-text submit-button-big" href="{% url 'treaty' %}?value=Карта">Карта</a>
+        <a class="a-text submit-button-big" href="{% url 'treaty' %}?value=Ипотека">Ипотека</a>
+        <a class="a-text submit-button-big" href="{% url 'treaty' %}?value=Вклад">Вклад</a>
+    </div>
+</form>
+
+</div>
+{% endblock %}

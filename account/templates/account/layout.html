@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <input type="checkbox" id="toggle-nav">
+        <label for="toggle-nav">Новигация</label>
+        <div class="bokovoy-blok">
+            <h2>Навигация</h2>
+            <ul>
+                <li><a href="{% url 'account'%}">Счет</a></li>
+                <li><a href="{% url 'service'%}">Услуги</a></li>
+            </ul>
+        </div>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block titel %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'account/css/main.css' %}">
+
+    <style>
+        .gold-circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #fdff53;
+            border-radius: 50%;
+            animation: moveDiagonal 8s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveDiagonal {
+            0% { transform: translate(250,   200); }
+            100% { transform: translate(0vw, 100vh); }
+        }
+
+        .youtube-video {
+            position: relative;
+            padding-bottom: 16.35%;
+            height: 0;
+            overflow: hidden;
+            max-width: 30%;
+            border: 16px solid gold;
+            border-radius: 10%;
+            margin: 60px;
+        }
+
+        .youtube-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    {% for i in positiveTweet %}
+        <div class="gold-circle" style="left: {{ i }}%; top: {{ i }}%;"></div>
+        <div class="gold-circle" style="left: {{ i }}%; top: -{{ i }}%;"></div>
+    {% endfor %}
+
+    <div class="container">
+        <div class="top">{% block option %}{% endblock%}</div>
+        <div class="content">{% block content %}{% endblock %}</div>
+    </div>
+
+    <div class="youtube-video containerss">
+        <iframe src="https://www.youtube.com/embed/{{ youtube_video_id }}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+</body>
+</html>

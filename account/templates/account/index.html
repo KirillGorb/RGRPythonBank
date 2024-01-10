@@ -1,0 +1,19 @@
+{% extends 'account/layout.html' %}
+
+{% block titel %}Счет{% endblock%}
+{% block option %}<p class="center-top ">Счет</p>{% endblock%}
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <p class="centered-text">{{ account.invoice_size }} берюлек</p>
+    </form>
+        <div class="buttons">
+            <div class="button-group">
+                <button class="a-text submit-button">Пополнить</button>
+                <button class="a-text submit-button">Оплатить</button>
+            </div>
+            <a class="a-text submit-button" href="{% url 'service' %}">Оформить услугу</a>
+        </div>
+    </div>
+{% endblock%}
