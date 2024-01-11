@@ -1,0 +1,14 @@
+{% extends 'account/layout.html' %}
+
+{% block titel %}Пополнение{% endblock%}
+{% block option %}<p class="center-top ">Пополнить счет</p>{% endblock%}
+{% block content %}
+<div class="container-content">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.invoice_size }}
+        <span>{{ error }}</span>
+        <button class="submit-button" type="submit">Пополнить</button>
+    </form>
+</div>
+{% endblock%}

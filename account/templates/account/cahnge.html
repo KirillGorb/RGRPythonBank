@@ -1,0 +1,34 @@
+{% extends 'account/layout.html' %}
+
+{% block titel %}Счет{% endblock%}
+{% block option %}<p class="center-top ">Счет</p>{% endblock%}
+{% block content %}
+<style>
+    .container-many-elements {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px;
+    }
+    .group-container-many-elements {
+      width: 300px;
+      height: 200px;
+      overflow: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr))
+      gap: 10px;
+    }
+
+
+
+</style>
+<div class="container-content">
+    <p class="centered-text">{{ account.invoice_size }} берюлек</p>
+    <ul class = "group-container-many-elements">
+        {% for service in services %}
+          <li class="container-many-elements centered-text">{{ service.service }} {{ service.price }}
+          <a class="a-text submit-button" href="{% url 'service_payment' %}?value={{ service.id }}">Оплатить</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock%}

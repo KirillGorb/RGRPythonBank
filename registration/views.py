@@ -1,6 +1,6 @@
 from account.models import Account
 from django.shortcuts import render, redirect
-from .forms import UserForm  # Подставьте вашу форму для создания пользователя
+from .forms import UserForm
 
 def main_window(request):
     error = ''

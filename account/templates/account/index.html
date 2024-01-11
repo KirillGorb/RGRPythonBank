@@ -9,6 +9,8 @@
         <p class="centered-text">{{ account.invoice_size }} берюлек</p>
     </form>
         <div class="buttons">
+            <a class="a-text submit-button" href="{% url 'payman' %}">Пополнить баланс</a>
+            <a class="a-text submit-button" href="{% url 'change' %}">Оплатить</a>
             <a class="a-text submit-button" href="{% url 'service' %}">Оформить услугу</a>
         </div>
     </div>

@@ -3,36 +3,43 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'account/css/main.css' %}">
-    <input type="checkbox" id="toggle-nav">
-        <label for="toggle-nav">Новигация</label>
-        <div class="bokovoy-blok">
-            <h2>Навигация</h2>
-            <ul>
-                <li><a href="{% url 'account'%}">Счет</a></li>
-                <li><a href="{% url 'service'%}">Услуги</a></li>
-            </ul>
-        </div>
-
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block titel %}{% endblock %}</title>
+
 
     <style>
-        .gold-circle {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: #fdff53;
-            border-radius: 50%;
-            animation: moveDiagonal 8s linear infinite;
-            z-index: -1;
+        .top-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: top 0.3s;
+            z-index: 1000;
         }
 
-        @keyframes moveDiagonal {
-            0% { transform: translate(250,   200); }
-            100% { transform: translate(0vw, 100vh); }
+        .top-panel ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .top-panel li a {
+            color: #fdff53;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .top-panel li a:hover {
+            background-color: #fff;
         }
 
         .youtube-video {
@@ -44,6 +51,8 @@
             border: 16px solid gold;
             border-radius: 10%;
             margin: 60px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .youtube-video iframe {
@@ -53,24 +62,59 @@
             width: 100%;
             height: 100%;
         }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
     </style>
 
+    <title>{% block titel %}{% endblock %}</title>
 </head>
 <body>
-    {% for i in positiveTweet %}
-        <div class="gold-circle" style="left: {{ i }}%; top: {{ i }}%;"></div>
-        <div class="gold-circle" style="left: {{ i }}%; top: -{{ i }}%;"></div>
-    {% endfor %}
-
+    <div class="top-panel" id="myTopPanel">
+        <ul>
+            <li><a href="{% url 'account'%}">Счет</a></li>
+            <li><a href="{% url 'service'%}">Услуги</a></li>
+            <li><a href="{% url 'payman'%}">Оплатить</a></li>
+            <li><a href="{% url 'change'%}">Погасить</a></li>
+        </ul>
+    </div>
+    <script>
+        var topPanel = document.getElementById('myTopPanel');
+        document.addEventListener('mouseover', function(event) {
+            if (event.clientY < 50) {
+                topPanel.style.top = '0';
+            }
+        });
+        document.addEventListener('mouseout', function(event) {
+            if (event.clientY > 50) {
+                topPanel.style.top = '-50px';
+            }
+        });
+    </script>
+    <br><br><br>
     <div class="container">
         <div class="top">{% block option %}{% endblock%}</div>
         <div class="content">{% block content %}{% endblock %}</div>
     </div>
 
-    <div class="youtube-video containerss">
+    <div class="youtube-video">
         <iframe src="https://www.youtube.com/embed/{{ youtube_video_id }}" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>
+
+    <div class="footer">
+        <div style="float: left; padding: 0px 20px;  color: white;">+7 902 194 64 72</div>
+        <div style="float: right; padding: 0px 20px; color: white;">КириллБанк</div>
+    </div>
+
 </body>
 </html>

@@ -38,42 +38,6 @@ label {
     left: -200px;
 }
 
-.bokovoy-blok {
-    position: absolute;
-    left: 15%;
-    transform: translateX(-50%);
-    width: 200px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    color: #ffffff;
-    transition: left 0.3s;
-}
-
-.bokovoy-blok h2 {
-    text-align: center;
-}
-
-.bokovoy-blok ul {
-    list-style: none;
-    padding: 0;
-}
-
-.bokovoy-blok ul li {
-    margin-bottom: 10px;
-}
-
-.bokovoy-blok ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.bokovoy-blok ul li a:hover {
-    color: #cccccc;
-}
-
-
 .content {
     width: 528px;
     height: 280px;
